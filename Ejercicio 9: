@@ -1,0 +1,11 @@
+using System;
+using System.Collections.Generic;
+
+namespace Ejercicio9
+{
+    class ContadorVocales
+    {
+        public string Palabra { get; set; }
+        private Dictionary<char, int> Vocales { get;
+::contentReference[oaicite:0]{index=0}
+ 
