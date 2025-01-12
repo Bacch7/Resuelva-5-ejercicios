@@ -1,0 +1,44 @@
+using System;
+
+namespace Ejercicio8
+{
+    class Palindromo
+    {
+        public string Palabra { get; set; }
+
+        public Palindromo(string palabra)
+        {
+            Palabra = palabra;
+        }
+
+        public bool EsPalindromo()
+        {
+            string inversa = "";
+            for (int i = Palabra.Length - 1; i >= 0; i--)
+            {
+                inversa += Palabra[i];
+            }
+            return Palabra.Equals(inversa, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Introduce una palabra: ");
+            string palabra = Console.ReadLine();
+
+            Palindromo palindromo = new Palindromo(palabra);
+
+            if (palindromo.EsPalindromo())
+            {
+                Console.WriteLine($"{palabra} es un palíndromo.");
+            }
+            else
+            {
+                Console.WriteLine($"{palabra} no es un palíndromo.");
+            }
+        }
+    }
+}
