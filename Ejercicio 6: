@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Ejercicio6
+{
+    class Asignatura
+    {
+        public string Nombre { get; set; }
+        public double Nota { get; set; }
+
+        public Asignatura(string nombre)
+        {
+            Nombre = nombre;
+        }
+
+        public bool EstaAprobada()
+        {
+            return Nota >= 5.0;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Asignatura> asignaturas = new List<Asignatura>
+            {
+                new Asignatura("Matemáticas"),
+                new Asignatura("Física"),
+                new Asignatura("Química"),
+                new Asignatura("Historia"),
+                new Asignatura("Lengua")
+            };
+
+            foreach (var asignatura in asignaturas)
+            {
+                Console.Write($"Introduce la nota para {asignatura.Nombre}: ");
+                asignatura.Nota = Convert.ToDouble(Console.ReadLine());
+            }
+
+            var asignaturasRepetir = asignaturas.Where(a => !a.EstaAprobada()).ToList();
+
+            if (asignaturasRepetir.Count > 0)
+            {
+                Console.WriteLine("\nDebes repetir las siguientes asignaturas:");
+                foreach (var asignatura in asignaturasRepetir)
+                {
+                    Console.WriteLine(asignatura.Nombre);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n¡Felicidades! Has aprobado todas las asignaturas.");
+            }
+        }
+    }
+}
